@@ -10,7 +10,7 @@ export default {
         const page = this.$mp.page
         if (typeof page.getTabBar === 'function' && page.getTabBar()) {
           page.getTabBar().setData({
-            selected: 4
+            selected: 3
           })
         }
     }
