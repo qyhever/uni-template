@@ -1,0 +1,19 @@
+<script>
+	export default {
+		onLaunch: function() {
+			console.log('App Launch')
+		},
+		onShow: function() {
+			console.log('App Show')
+		},
+		onHide: function() {
+			console.log('App Hide')
+		}
+	}
+</script>
+
+<style lang="scss">
+// @import "./wxcomponents/vant/common/index.wxss";
+@import "@/uni_modules/uview-ui/index.scss";
+@import "@/static/styles/atom.scss";
+</style>

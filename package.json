@@ -1,0 +1,15 @@
+{
+  "name": "uni-template",
+  "version": "1.0.0",
+  "description": "use uni to develop wechat applet\r 使用 uni 开发 微信小程序\r 本项目为 HBuilderX 创建项目，通过 HBuilderX 运行",
+  "main": "main.js",
+  "scripts": {},
+  "keywords": [
+    "uni",
+    "miniprogram",
+    "wechat"
+  ],
+  "author": "qyhever",
+  "license": "ISC",
+  "dependencies": {}
+}

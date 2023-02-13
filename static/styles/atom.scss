@@ -1,0 +1,198 @@
+/**
+ * 原子性 css
+ */
+@for $i from 0 through 36 {
+  @if $i % 2 == 0 or $i % 5 == 0 {
+    .p-#{$i} {
+      padding: $i + px;
+    }
+    .px-#{$i} {
+      padding-left: $i + px;
+      padding-right: $i + px;
+    }
+    .py-#{$i} {
+      padding-top: $i + px;
+      padding-bottom: $i + px;
+    }
+    .pt-#{$i} {
+      padding-top: $i + px;
+    }
+    .pr-#{$i} {
+      padding-right: $i + px;
+    }
+    .pb-#{$i} {
+      padding-bottom: $i + px;
+    }
+    .pl-#{$i} {
+      padding-left: $i + px;
+    }
+    .m-#{$i} {
+      margin: $i + px;
+    }
+    .mx-#{$i} {
+      margin-left: $i + px;
+      margin-right: $i + px;
+    }
+    .my-#{$i} {
+      margin-top: $i + px;
+      margin-bottom: $i + px;
+    }
+    .mt-#{$i} {
+      margin-top: $i + px;
+    }
+    .mr-#{$i} {
+      margin-right: $i + px;
+    }
+    .mb-#{$i} {
+      margin-bottom: $i + px;
+    }
+    .ml-#{$i} {
+      margin-left: $i + px;
+    }
+    .font-size-#{$i} {
+      font-size: $i + px;
+    }
+    .rounded-#{$i} {
+      border-radius: $i + px;
+    }
+  }
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+.float-left {
+  float: left;
+}
+.float-right {
+  float: right;
+}
+.flex {
+  display: flex;
+}
+.inline-flex {
+  display: inline-flex;
+}
+.flex-column {
+  flex-direction: column;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+.justify-center {
+  justify-content: center;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.justify-around {
+  justify-content: space-around;
+}
+.justify-end {
+  justify-content: flex-end;
+}
+.items-start {
+  align-items: flex-start;
+}
+.items-center {
+  align-items: center;
+}
+.items-stretch {
+  align-items: stretch;
+}
+.items-end {
+  align-items: flex-end;
+}
+.self-start {
+  align-self: flex-start;
+}
+.self-center {
+  align-self: center;
+}
+.self-end {
+  align-self: flex-end;
+}
+.self-stretch {
+  align-self: stretch;
+}
+.flex-grow {
+  flex-grow: 1;
+}
+.hide {
+  display: none;
+}
+.show {
+  display: block;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+.link {
+  color: #3c3c3c;
+}
+.underline {
+  text-decoration: underline;
+}
+.font-bold {
+  font-weight: 700;
+}
+.bg-color-light-blue {
+  background-color: #F1F6FD;
+}
+.bg-color-white {
+  background-color: #fff;
+}
+.text-color-white {
+  color: #fff;
+}
+.text-color-black {
+  color: #000;
+}
+.text-color-primary {
+    color: #3F87FF;
+}
+.text-color-default {
+  color: #2E3656;
+}
+.text-color-regular {
+  color: #666;
+}
+.text-color-secondary {
+  color: #999;
+}
+.text-color-placeholder {
+  color: #ccc;
+}
+.inline-block {
+  display: inline-block;
+}
+.line-height-1 {
+  line-height: 1;
+}
+.line-height-1-2 {
+  line-height: 1.2;
+}
+.line-height-1-5 {
+  line-height: 1.5;
+}
+.relative {
+  position: relative;
+}
+.absolute {
+  position: absolute;
+}
+.overflow-hidden {
+  overflow: hidden;
+}
+.height-fluid {
+  height: 100%;
+}
+.text-center {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
+.break-all {
+  word-break: break-all;
+}
