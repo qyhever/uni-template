@@ -9,7 +9,7 @@ if (platform && /(windows|devtools)/i.test(platform)) {
 
 function getURL (str) {
     if (isDevtool) {
-        return 'http://localhost:3000/' + str
+        return 'http://localhost:3023/' + str
     }
     return 'https://qinyhquery.gitee.io/static/region/' + str + '.json'
 }
@@ -52,5 +52,13 @@ export function getTownList (params) {
         params
     }).then(res => {
         return res[params.code]
+    })
+}
+
+export function getOrderList (params) {
+    return request({
+        method: 'get',
+        url: '/orders',
+        params
     })
 }

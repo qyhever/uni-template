@@ -1,5 +1,5 @@
 <template>
-  <view>
+  <view class="wrap">
     <view class="u-tabs-box">
       <u-tabs
         ref="tabs"
@@ -10,22 +10,83 @@
       >
       </u-tabs>
     </view>
+    <swiper
+      class="swiper-box"
+      :current="currentSwiperIndex"
+      :duration="280"
+      easing-function="easeInOutCubic"
+      @transition="onTransition"
+      @animationfinish="onAnimationfinish"
+    >
+      <swiper-item
+        v-for="(groupItem, groupIndex) in orderGroupList"
+        :key="groupIndex"
+        class="swiper-item"
+      >
+        <scroll-view
+          scroll-y
+          style="height: 100%;width: 100%;"
+          @scrolltolower="reachBottom"
+        >
+          <view
+            v-for="(item, index) in groupItem"
+            :key="index"
+            class="order-item"
+          >
+            <text class="order-item-id">{{item.id}}</text>
+            <image class="order-item-image" :src="item.picUrl"></image>
+            <text class="order-item-name">{{item.name}}</text>
+          </view>
+          <view class="pb-10">
+            <u-loadmore :status="tabList[index].status"></u-loadmore>
+          </view>
+        </scroll-view>
+      </swiper-item>
+    </swiper>
   </view>
 </template>
 
 <script>
+import {
+  getOrderList
+} from '@/api'
+const PAGE_SIZE = 10
 export default {
   data() {
     return {
       tabList: [
-        { name: '待付款' },
-        { name: '待发货' },
-        { name: '待收货' },
-        { name: '待评价' }
+        {
+          name: '待付款',
+          value: 'paying',
+          status: 'loadmore',
+          currentPage: 1
+        },
+        {
+          name: '待发货',
+          value: 'sending',
+          status: 'loadmore',
+          currentPage: 1
+        },
+        {
+          name: '待收货',
+          value: 'receiving',
+          status: 'loadmore',
+          currentPage: 1
+        },
+        {
+          name: '待评价',
+          value: 'commenting',
+          status: 'loadmore',
+          currentPage: 1
+        }
       ],
-      currentTabIndex: 1,
+      orderGroupList: Array(4).fill([]),
+      currentTabIndex: 0,
       currentSwiperIndex: 0
     }
+  },
+  onLoad () {
+    this.queryOrderList(0)
   },
   onShow() {
     const page = this.$mp.page
@@ -36,12 +97,93 @@ export default {
     }
   },
   methods: {
-    onTabChange (index) {
-      this.currentSwiperIndex = index
+    queryOrderList (index) {
+      const currentTab = this.tabList[index]
+      currentTab.status = 'loading'
+      getOrderList({
+        page: currentTab.currentPage,
+        size: PAGE_SIZE,
+        type: currentTab.value
+      }).then(res => {
+        const list = res.list || []
+        const total = res.total || 0
+        let orders = this.orderGroupList[index]
+        orders = (
+          currentTab.currentPage === 1 ? [] : orders
+        ).concat(list)
+        this.orderGroupList.splice(index, 1, orders)
+        if (currentTab.currentPage * PAGE_SIZE > total) {
+          this.tabList[this.currentTabIndex].status = 'nomore'
+        }
+
+      }).catch(err => {
+        console.log('err', err)
+      })
+    },
+    onTabChange (data) {
+      this.currentSwiperIndex = data.index
+      this.currentTabIndex = data.index
+      const orders = this.orderGroupList[this.currentTabIndex]
+      if (orders.length === 0) {
+        this.queryOrderList(this.currentTabIndex)
+      }
+    },
+    // 切换过程中一直触发
+    onTransition (event) {},
+    // 切换完毕触发
+    onAnimationfinish (event) {
+      const current = event.detail.current
+      this.currentTabIndex = current
+    },
+    reachBottom () {
+      console.log('reachBottom')
+      const currentTab = this.tabList[this.currentTabIndex]
+      if (currentTab.status === 'nomore') {
+        return
+      }
+      currentTab.currentPage += 1
+      this.queryOrderList(this.currentTabIndex)
     }
   }
 }
 </script>
 
-<style>
+<style lang="less">
+page {
+  height: 100%;
+}
+.wrap {
+	display: flex;
+	flex-direction: column;
+  height: 100%;
+}
+.swiper-box {
+  flex: 1;
+}
+.swiper-item {
+	height: 100%;
+}
+.order-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+}
+.order-item-id {
+  margin-right: 12px;
+  font-weight: 700;
+}
+.order-item-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  margin-right: 12px;
+}
+.order-item-name {
+  flex: 0 0 15em;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 14px;
+  color: #3c3c3c;
+}
 </style>
