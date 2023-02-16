@@ -25,21 +25,32 @@
       >
         <scroll-view
           scroll-y
+          enable-back-to-top
+          refresher-enabled
+          :refresher-triggered="refresherTriggered"
           style="height: 100%;width: 100%;"
           @scrolltolower="reachBottom"
+          @refresherrefresh="onRefresherrefresh"
         >
-          <view
-            v-for="(item, index) in groupItem"
-            :key="index"
-            class="order-item"
-          >
-            <text class="order-item-id">{{item.id}}</text>
-            <image class="order-item-image" :src="item.picUrl"></image>
-            <text class="order-item-name">{{item.name}}</text>
-          </view>
-          <view class="pb-10">
-            <u-loadmore :status="tabList[index].status"></u-loadmore>
-          </view>
+          <template v-if="groupItem.length">
+            <view
+              v-for="(item, index) in groupItem"
+              :key="index"
+              class="order-item"
+            >
+              <text class="order-item-id">{{item.id}}</text>
+              <view class="order-item-image">
+                <u--image :src="item.picUrl" :width="40" :height="40"></u--image>
+              </view>
+              <text class="order-item-name">{{item.name}}</text>
+            </view>
+            <view class="pb-10">
+              <u-loadmore :status="tabList[index].status"></u-loadmore>
+            </view>
+          </template>
+          <template v-else>
+            <u-empty></u-empty>
+          </template>
         </scroll-view>
       </swiper-item>
     </swiper>
@@ -82,7 +93,8 @@ export default {
       ],
       orderGroupList: Array(4).fill([]),
       currentTabIndex: 0,
-      currentSwiperIndex: 0
+      currentSwiperIndex: 0,
+      refresherTriggered: false
     }
   },
   onLoad () {
@@ -105,6 +117,7 @@ export default {
         size: PAGE_SIZE,
         type: currentTab.value
       }).then(res => {
+        this.refresherTriggered = false
         const list = res.list || []
         const total = res.total || 0
         let orders = this.orderGroupList[index]
@@ -114,6 +127,8 @@ export default {
         this.orderGroupList.splice(index, 1, orders)
         if (currentTab.currentPage * PAGE_SIZE > total) {
           this.tabList[this.currentTabIndex].status = 'nomore'
+        } else {
+          this.tabList[this.currentTabIndex].status = 'loadmore'
         }
 
       }).catch(err => {
@@ -134,6 +149,19 @@ export default {
     onAnimationfinish (event) {
       const current = event.detail.current
       this.currentTabIndex = current
+      const orders = this.orderGroupList[this.currentTabIndex]
+      if (orders.length === 0) {
+        this.queryOrderList(this.currentTabIndex)
+      }
+    },
+    onRefresherrefresh () {
+      const currentTab = this.tabList[this.currentTabIndex]
+      if (currentTab.status === 'loading') {
+        return
+      }
+      currentTab.currentPage = 1
+      this.refresherTriggered = true
+      this.queryOrderList(this.currentTabIndex)
     },
     reachBottom () {
       console.log('reachBottom')
@@ -177,6 +205,7 @@ page {
   height: 40px;
   border-radius: 4px;
   margin-right: 12px;
+  overflow: hidden;
 }
 .order-item-name {
   flex: 0 0 15em;
