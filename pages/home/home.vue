@@ -19,7 +19,8 @@ export default {
         return {
             pageList: [
                 { title: '表单', url: '/pages/form/form' },
-                { title: '订单列表', url: '/pages/order/order' }
+                { title: '订单列表', url: '/pages/order/order' },
+                { title: '报表', url: '/pages/report/report' }
             ]
         }
     },

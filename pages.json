@@ -45,6 +45,15 @@
         		"navigationBarTitleText": "订单",
                 "usingComponents": {}
         	}
+        },
+        {
+        	"path": "pages/report/report",
+        	"style": {
+        		"navigationBarTitleText": "报表",
+                "usingComponents": {
+                    "ec-canvas": "/wxcomponents/ec-canvas/ec-canvas"
+                }
+        	}
         }
 	],
 	"globalStyle": {

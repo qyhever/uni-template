@@ -4,7 +4,7 @@
 			:class="[navFixed ? 'header_fixed' : '', type == 'transparent' ? 'header_absolute': '', navShadow ? 'header_shadow': '', themeBgColorName]"
 			:style="[navBgColor ? { backgroundImage: navBgColor } : {}, { paddingTop: statusBarHeight + 'px', color: navFontColor, opacity: transparentValue}]"
 		>
-			<view class="header_content">
+			<view class="header_content" :style="contentStyle">
 				<view class="header_left_box">
 					<slot name="left">
 						<view class="header_left_info" :class="[isTwoBtn ? 'header_btnMongol' : '' , isWhite && isTwoBtn ? 'header_colorWhite_btnMongol' : '']" v-if="back || $slots.left || home">
@@ -71,7 +71,9 @@
 				<view class="header_right_info"><slot name="transparentFixedRight"></slot></view>
 			</view>
 		</view>
-		<view v-if="type == 'fixed'" :style="{ paddingTop: statusBarHeight + 'px' }"><view class="header_station"></view></view>
+		<view v-if="type == 'fixed'" :style="{ paddingTop: statusBarHeight + 'px' }">
+            <view class="header_station" :style="contentStyle"></view>
+        </view>
 	</view>
 </template>
 <script>
@@ -186,6 +188,7 @@ export default {
 			// 上次显示的导航栏颜色
 			lastFrontColor: '',
 			themeBgColorName: '',
+            contentStyle: ''
 		};
 	},
 	computed: {
@@ -248,6 +251,9 @@ export default {
 		this.navTransparentFixedFontColor = this.transparentFixedFontColor;
 		//获取手机状态栏高度
 		this.statusBarHeight = uni.getSystemInfoSync()['statusBarHeight'];
+        const menuInfo = wx.getMenuButtonBoundingClientRect()
+        console.log('menuInfo', menuInfo)
+        this.contentStyle = 'height: ' + (menuInfo.height + 12) + 'px'
 		const _this = this;
 		this.pageScroll({
 			scrollTop: this.scrollTop
@@ -356,12 +362,12 @@ export default {
 	align-items: flex-end;
 	justify-content: space-between;
 	flex-direction: row;
-	height: 88rpx;
+	height: 44px;
 	position: relative;
 }
 
 .header_station {
-	height: 88rpx;
+	height: 44px;
 }
 
 .header_shadow {
@@ -394,7 +400,7 @@ export default {
 	/* #endif */
 	flex-direction: row;
 	align-items: center;
-	height: 88rpx;
+	height: 100%;
 	flex: 1;
 }
 
@@ -440,7 +446,7 @@ export default {
 }
 
 .header_title {
-	height: 88rpx;
+	height: 100%;
 	font-size: 32rpx;
 	padding-left: 30rpx;
 	padding-right: 30rpx;
@@ -470,7 +476,7 @@ export default {
 }
 
 .header_right_info {
-	height: 88rpx;
+	height: 100%;
 	/* #ifndef APP-PLUS-NVUE */
 	display: flex;
 	flex-shrink: 0;
