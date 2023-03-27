@@ -252,7 +252,7 @@ export default {
 		//获取手机状态栏高度
 		this.statusBarHeight = uni.getSystemInfoSync()['statusBarHeight'];
         const menuInfo = wx.getMenuButtonBoundingClientRect()
-        console.log('menuInfo', menuInfo)
+        // console.log('menuInfo', menuInfo)
         this.contentStyle = 'height: ' + (menuInfo.height + 12) + 'px'
 		const _this = this;
 		this.pageScroll({

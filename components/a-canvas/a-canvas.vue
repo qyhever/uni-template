@@ -4,6 +4,7 @@
         v-if="isUseNewCanvas"
         type="2d"
         class="ec-canvas"
+        :data-id="uuid"
         :canvas-id="canvasId"
         @init="init"
         @touchstart="ec.disableTouch ? () => {} : touchStart"
@@ -24,7 +25,8 @@
 
 <script>
 import WxCanvas from './wx-canvas';
-import * as echarts from './echarts.min.js';
+// import * as echarts from './echarts.min.js';
+import * as echarts from '@/wxcomponents/ec-canvas/echarts.min.js';
 
 let ctx;
 
@@ -80,11 +82,12 @@ export default {
     
     data () {
         return {
-            isUseNewCanvas: false
+            isUseNewCanvas: false,
+            uuid: ''
         }
     },
     
-    mounted () {
+    ready () {
         // Disable prograssive because drawImage doesn't support DOM as parameter
         // See https://developers.weixin.qq.com/miniprogram/dev/api/canvas/CanvasContext.drawImage.html
         echarts.registerPreprocessor(option => {
@@ -122,6 +125,8 @@ export default {
                 isUseNewCanvas = false
             }
             this.isUseNewCanvas = isUseNewCanvas
+            
+            this.uuid = Math.random().toString(16).slice(2)
     
             if (forceUseOldCanvas && canUseNewCanvas) {
                 console.warn('开发者强制使用旧canvas,建议关闭');
@@ -130,9 +135,9 @@ export default {
             if (isUseNewCanvas) {
                 // console.log('微信基础库版本大于2.9.0，开始使用<canvas type="2d"/>');
                 // 2.9.0 可以使用 <canvas type="2d"></canvas>
-                setTimeout(() => {
+                // setTimeout(() => {
                     this.initByNewWay(callback);
-                })
+                // })
             } else {
                 const isValid = compareVersion(version, '1.9.91') >= 0
                 if (!isValid) {

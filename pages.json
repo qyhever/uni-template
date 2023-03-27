@@ -54,6 +54,13 @@
                     "ec-canvas": "/wxcomponents/ec-canvas/ec-canvas"
                 }
         	}
+        },
+        {
+        	"path": "pages/fab/fab",
+        	"style": {
+        		"navigationBarTitleText": "悬浮按钮",
+                "usingComponents": {}
+        	}
         }
 	],
 	"globalStyle": {
