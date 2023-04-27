@@ -10,16 +10,16 @@
       <text>
         {{item.label}}
       </text>
-      <u-icon :name="item.sort === 'asc' ? 'arrow-downward' : 'arrow-upward'" color="#333" size="16"></u-icon>
+      <uni-icons :type="item.sort === 'asc' ? 'arrow-up' : 'arrow-down'" color="#333" size="16"></uni-icons>
     </view>
     <view class="fab-menu-item fab-button-main" @click="onMainClick">
       <view class="h-fluid flex justify-center items-center">
-        <u-icon v-if="expand" name="close" color="#fff" size="25"></u-icon>
+        <uni-icons v-if="expand" type="closeempty" color="#fff" size="25"></uni-icons>
         <template v-else>
           <text>
             {{ selectedItem.label }}
           </text>
-          <u-icon :name="selectedItem.sort === 'asc' ? 'arrow-downward' : 'arrow-upward'" color="#fff" size="16"></u-icon>
+          <uni-icons :type="selectedItem.sort === 'asc' ? 'arrow-up' : 'arrow-down'" color="#fff" size="16"></uni-icons>
         </template>
       </view>
     </view>
@@ -62,7 +62,7 @@ export default {
       default: () => ({
         label: '代码',
         value: 'code',
-        sort: 'desc'
+        sort: 'asc'
       })
     }
   },
@@ -103,17 +103,17 @@ export default {
       this.animationA = wx.createAnimation({
         duration: 200,
         timingFunction: 'ease-out'
-      }).translate(-35, -65).rotateZ(360).opacity(1).step()
+      }).translate(-28, -56).rotateZ(360).opacity(1).step()
 
       this.animationB = wx.createAnimation({
         duration: 200,
         timingFunction: 'ease-out'
-      }).translate(-70, 0).rotateZ(360).opacity(1).step()
+      }).translate(-66, 0).rotateZ(360).opacity(1).step()
 
       this.animationC = wx.createAnimation({
         duration: 200,
         timingFunction: 'ease-out'
-      }).translate(-35, 65).rotateZ(360).opacity(1).step()
+      }).translate(-28, 56).rotateZ(360).opacity(1).step()
     },
     handleCollapse () {
       this.animationMain = wx.createAnimation({
@@ -146,8 +146,8 @@ export default {
   position: fixed;
   bottom: 75px;
   right: 35px;
-  height: 60px;
-  width: 60px;
+  height: 56px;
+  width: 56px;
   border-radius: 50%;
 }
 .fab-menu-item {
@@ -156,8 +156,8 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 60px;
-  width: 60px;
+  height: 56px;
+  width: 56px;
   border-radius: 50%;
   font-size: 12px;
   background-color: #8fbcec;

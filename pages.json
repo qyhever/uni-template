@@ -13,6 +13,7 @@
         {
         	"path": "pages/find/find",
         	"style": {
+                "navigationStyle": "custom",
         		"navigationBarTitleText": "发现",
                 "usingComponents": {}
         	}
