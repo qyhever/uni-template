@@ -2,7 +2,7 @@ import qs from './qs'
 
 // 默认配置
 const defaultConfig = {
-  baseURL: 'http://localhost:3023',
+  baseURL: 'http://localhost:5000',
   timeout: 20000
 }
 
