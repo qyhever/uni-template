@@ -1,6 +1,6 @@
 <template>
     <view class="page">
-        <z-nav-bar bgColor="#fff" title="首页" backState="1000" homeState="1000">
+        <z-nav-bar bgColor="#fff" fontColor="#000" title="首页" backState="2000" homeState="2000">
         </z-nav-bar>
         <u-cell
             v-for="(item, index) in pageList"

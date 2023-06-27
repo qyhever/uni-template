@@ -118,6 +118,9 @@
 .flex-grow {
   flex-grow: 1;
 }
+.flex-1 {
+    flex: 1;
+}
 .hide {
   display: none;
 }
@@ -195,4 +198,7 @@
 }
 .break-all {
   word-break: break-all;
+}
+.border-bottom {
+    border-bottom: 1px solid #d8d8d8;
 }

@@ -12,6 +12,9 @@
             >
             </u-search>
         </view>
+        <view>
+            <u-button @click="onToQueryPage">查询页面</u-button>
+        </view>
     </view>
 </template>
 
@@ -33,6 +36,11 @@ export default {
     methods: {
         onSearch (value) {
             console.log('value', value)
+        },
+        onToQueryPage () {
+            wx.navigateTo({
+                url: '/packageA/pages/query-condition/query-condition'
+            })
         }
     }
 }

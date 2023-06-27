@@ -64,6 +64,19 @@
         	}
         }
 	],
+    "subPackages": [
+        {
+            "root": "packageA",
+            "pages": [
+                {
+                    "path": "pages/query-condition/query-condition",
+                    "style": {
+                        "navigationBarTitleText": "查询"
+                    }
+                }
+            ]
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
