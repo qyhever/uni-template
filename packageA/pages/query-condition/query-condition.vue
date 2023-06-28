@@ -5,13 +5,13 @@
                 日期
             </view>
         </view>
-        <view class="py-16">
+        <view class="pt-16 pb-8 a-border-bottom-10">
             <view class="pl-16 pr-8">
                 <view class="flex">
-                    <view class="flex-1 tag-item" @click="onShowDatePicker('startDate')">
+                    <view class="flex-1 tag-item card-item" @click="onShowDatePicker('startDate')">
                         {{ startDate || '开始日期' }}
                     </view>
-                    <view class="flex-1 tag-item" @click="onShowDatePicker('endDate')">
+                    <view class="flex-1 tag-item card-item" @click="onShowDatePicker('endDate')">
                         {{ endDate || '结束日期' }}
                     </view>
                 </view>
@@ -23,7 +23,7 @@
                         @click="onShortItemClick(item)"
                     >
                         <view
-                            class="shortcut-item"
+                            class="shortcut-item card-item"
                             :class="{
                                 active: activeShortcut === item.value
                             }"
@@ -34,6 +34,18 @@
                 </view>
             </view>
         </view>
+        
+        <view>
+            <view class="px-16 py-12 border-bottom">
+                <view class="a-header-line">
+                    店铺
+                </view>
+            </view>
+            <view class="p-16">
+                <view class="card-item">请选择店铺代码/名称</view>
+            </view>
+        </view>
+        
         <u-datetime-picker
             ref="datePicker"
             v-model="currentDate"
@@ -134,15 +146,17 @@ export default {
 </script>
 
 <style lang="scss">
-.tag-item {
-    margin-right: 8px;
-    margin-bottom: 8px;
+.card-item {
     padding: 9px 0;
     border-radius: 2px;
     border: 1px solid #d8d8d8;
     text-align: center;
-    color: $uni-text-color-grey;
     font-size: 12px;
+    color: $uni-text-color-grey;
+}
+.tag-item {
+    margin-right: 8px;
+    margin-bottom: 8px;
 }
 .shortcut-item-outter {
     box-sizing: border-box;
@@ -151,11 +165,7 @@ export default {
     padding-bottom: 8px;
 }
 .shortcut-item {
-    padding: 9px 0;
-    border-radius: 2px;
-    border: 1px solid #d8d8d8;
-    text-align: center;
-    font-size: 12px;
+    color: $uni-text-color;
     &.active {
         background: rgba(63, 135, 255, 0.1);
         border-color: #3F87FF;
