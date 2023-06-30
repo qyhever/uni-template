@@ -38,9 +38,7 @@ export default {
             this.display = true
             this.classes = classNames.enter
             this.$nextTick(async () => {
-				// #ifdef H5
 				await uni.$u.sleep(20)
-				// #endif
                 // 标识动画尚未结束
                 this.$emit('enter')
                 this.transitionEnded = false

@@ -42,7 +42,7 @@
                 </view>
             </view>
             <view class="p-16">
-                <view class="card-item">请选择店铺代码/名称</view>
+                <view class="card-item" @click="onOpen">请选择店铺代码/名称</view>
             </view>
         </view>
         
@@ -56,14 +56,19 @@
             @cancel="dateVisible = false"
             @confirm="onDatePickerConfirm"
         />
+        <SelectListPopup ref="selectListPopup"></SelectListPopup>
     </view>
 </template>
 
 <script>
 import dayjs from '@/utils/dayjs.min.js'
 import { getShortcutDate } from './utils.js'
+import SelectListPopup from './select-list-popup.vue'
 
 export default {
+    components: {
+        SelectListPopup
+    },
     data () {
         return {
             dateVisible: false,
@@ -140,6 +145,9 @@ export default {
             const [startDate, endDate] = getShortcutDate(val)
             this.startDate = startDate
             this.endDate = endDate
+        },
+        onOpen () {
+            this.$refs.selectListPopup.open()
         }
     }
 }
