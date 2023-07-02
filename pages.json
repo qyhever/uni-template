@@ -31,37 +31,6 @@
         		"navigationBarTitleText": "我的",
                 "usingComponents": {}
         	}
-        },
-        {
-        	"path": "pages/form/form",
-        	"style": {
-                "navigationBarBackgroundColor": "#3badff",
-        		"navigationBarTitleText": "信息登记",
-                "usingComponents": {}
-        	}
-        },
-        {
-        	"path": "pages/order/order",
-        	"style": {
-        		"navigationBarTitleText": "订单",
-                "usingComponents": {}
-        	}
-        },
-        {
-        	"path": "pages/report/report",
-        	"style": {
-        		"navigationBarTitleText": "报表",
-                "usingComponents": {
-                    "ec-canvas": "/wxcomponents/ec-canvas/ec-canvas"
-                }
-        	}
-        },
-        {
-        	"path": "pages/fab/fab",
-        	"style": {
-        		"navigationBarTitleText": "悬浮按钮",
-                "usingComponents": {}
-        	}
         }
 	],
     "subPackages": [
@@ -71,7 +40,48 @@
                 {
                     "path": "pages/query-condition/query-condition",
                     "style": {
-                        "navigationBarTitleText": "查询"
+                        "navigationBarTitleText": "查询",
+                        "usingComponents": {}
+                    }
+                },
+                {
+                    "path": "pages/form/form",
+                    "style": {
+                        "navigationBarBackgroundColor": "#3badff",
+                        "navigationBarTitleText": "信息登记",
+                        "usingComponents": {}
+                    }
+                },
+                {
+                    "path": "pages/order/order",
+                    "style": {
+                        "navigationBarTitleText": "订单",
+                        "usingComponents": {}
+                    }
+                },
+                {
+                    "path": "pages/report/report",
+                    "style": {
+                        "navigationBarTitleText": "报表",
+                        "usingComponents": {
+                            "ec-canvas": "/wxcomponents/ec-canvas/ec-canvas"
+                        }
+                    }
+                },
+                {
+                    "path": "pages/fab/fab",
+                    "style": {
+                        "navigationBarTitleText": "悬浮按钮",
+                        "usingComponents": {}
+                    }
+                },
+                {
+                    "path": "pages/query-page/query-page",
+                    "style": {
+                        "navigationStyle": "custom",
+                        "usingComponents": {
+                            "custom-navbar": "/wxcomponents/custom-navbar/index"
+                        }
                     }
                 }
             ]

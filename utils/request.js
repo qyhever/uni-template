@@ -1,8 +1,9 @@
 import qs from './qs'
+import { baseURL } from '@/config/index.js'
 
 // 默认配置
 const defaultConfig = {
-  baseURL: 'http://localhost:5000',
+  baseURL,
   timeout: 20000
 }
 

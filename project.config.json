@@ -59,6 +59,13 @@
                 "pathName": "pages/form/form",
                 "query": "",
                 "scene": null
+              },
+              {
+                  "id": -1,
+                "name": "query-conditio",
+                "pathName": "packageA/pages/query-condition/query-condition",
+                "query": "",
+                "scene": null
               }
           ]
       }

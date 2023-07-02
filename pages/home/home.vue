@@ -18,10 +18,11 @@ export default {
     data () {
         return {
             pageList: [
-                { title: '表单', url: '/pages/form/form' },
-                { title: '订单列表', url: '/pages/order/order' },
-                { title: '报表', url: '/pages/report/report' },
-                { title: '悬浮按钮', url: '/pages/fab/fab' }
+                { title: '表单', url: '/packageA/pages/form/form' },
+                { title: '订单列表', url: '/packageA/pages/order/order' },
+                { title: '报表', url: '/packageA/pages/report/report' },
+                { title: '悬浮按钮', url: '/packageA/pages/fab/fab' },
+                { title: '查询页面', url: '/packageA/pages/query-page/query-page' }
             ]
         }
     },

@@ -1,4 +1,6 @@
 import request from '@/utils/request'
+import { baseURL } from '@/config/index.js'
+
 let isDevtool = false
 const {
     platform
@@ -9,7 +11,7 @@ if (platform && /(windows|devtools)/i.test(platform)) {
 
 function getURL (str) {
     if (isDevtool) {
-        return 'http://localhost:5000/common/area?type=' + str
+        return baseURL + '/common/area?type=' + str
     }
     return 'https://qinyhquery.gitee.io/static/region/' + str + '.json'
 }
@@ -59,6 +61,14 @@ export function getOrderList (params) {
     return request({
         method: 'get',
         url: '/common/order',
+        params
+    })
+}
+
+export function getQueryContiditionData (params) {
+    return request({
+        method: 'get',
+        url: '/common/filter',
         params
     })
 }
