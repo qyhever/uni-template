@@ -1,5 +1,5 @@
 <template>
-    <view>
+    <view :class="{'a-prevent': visible}">
         <view class="px-16 py-12 border-bottom">
             <view class="a-header-line">
                 日期
@@ -143,7 +143,8 @@ export default {
                 { label: '近一年', value: 'latestYear' }
             ],
             activeShortcut: '',
-            groupList: []
+            groupList: [],
+            visible: false
         }
     },
     onLoad (options) {
@@ -263,9 +264,11 @@ export default {
             this.endDate = endDate
         },
         onOpen (row) {
+            this.visible = true
             this.$refs.selectListPopup.open(row)
         },
         onSelectListPopupConfirm (prop, data) {
+            this.visible = false
             this.groupList = this.groupList.map(item => {
                 if (item.field === prop) {
                     return {
