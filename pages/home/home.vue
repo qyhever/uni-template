@@ -22,7 +22,8 @@ export default {
                 { title: '订单列表', url: '/packageA/pages/order/order' },
                 { title: '报表', url: '/packageA/pages/report/report' },
                 { title: '悬浮按钮', url: '/packageA/pages/fab/fab' },
-                { title: '查询页面', url: '/packageA/pages/query-page/query-page' }
+                { title: '查询页面', url: '/packageA/pages/query-page/query-page' },
+                { title: '查询页面fullpage', url: '/packageA/pages/query-fullpage/query-fullpage' }
             ]
         }
     },

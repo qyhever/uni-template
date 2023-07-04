@@ -10,6 +10,10 @@ Component({
     addGlobalClass: true
   },
   properties: {
+    placeholder: {
+        type: Boolean,
+        value: true
+    },
     title: {
       type: String,
       value: ''

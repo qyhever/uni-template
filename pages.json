@@ -83,6 +83,16 @@
                             "custom-navbar": "/wxcomponents/custom-navbar/index"
                         }
                     }
+                },
+                {
+                    "path": "pages/query-fullpage/query-fullpage",
+                    "style": {
+                        "navigationStyle": "custom",
+                        "enablePullDownRefresh": true,
+                        "usingComponents": {
+                            "custom-navbar": "/wxcomponents/custom-navbar/index"
+                        }
+                    }
                 }
             ]
         }
@@ -91,7 +101,8 @@
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
 		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
+		"backgroundColor": "#F8F8F8",
+        "backgroundColorTop": "#FFFFFF"
 	},
     "tabBar": {
         "custom": true,

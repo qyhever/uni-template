@@ -1,5 +1,5 @@
 <view class="custom-navbar {{ios ? 'ios' : 'android'}}">
-  <view class="navbar-placeholder" style="padding-top: {{statusBarHeight}}px;"></view>
+  <view wx:if="{{placeholder}}" class="navbar-placeholder" style="padding-top: {{statusBarHeight}}px;"></view>
   <view
     class="navbar-inner"
     style="{{navWidth}};{{navPaddingRight}}; padding-top: {{statusBarHeight}}px; color: {{color}};background: {{background}};"
