@@ -93,6 +93,13 @@
                             "custom-navbar": "/wxcomponents/custom-navbar/index"
                         }
                     }
+                },
+                {
+                    "path": "pages/user-profile/user-profile",
+                    "style": {
+                        "navigationBarTitleText": "头像",
+                        "usingComponents": {}
+                    }
                 }
             ]
         }
