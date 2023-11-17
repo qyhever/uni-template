@@ -100,6 +100,13 @@
                         "enablePullDownRefresh": true,
                         "usingComponents": {}
                     }
+                },
+                {
+                    "path": "pages/user-profile/user-profile",
+                    "style": {
+                        "navigationBarTitleText": "头像",
+                        "usingComponents": {}
+                    }
                 }
             ]
         }
