@@ -1,15 +1,16 @@
-<cover-view class="tab-bar" id="tabbar">
-  <cover-view class="tab-bar-border"></cover-view>
-  <cover-view
-    wx:for="{{list}}"
-    wx:key="index"
-    class="tab-bar-item"
-    data-path="{{item.pagePath}}"
-    data-index="{{index}}"
-    bindtap="switchTab"
-   >
-    <cover-image src="{{selected === index ? item.selectedIconPath : item.iconPath}}"></cover-image>
-    <cover-view style="color: {{selected === index ? selectedColor : color}}">{{item.text}}</cover-view>
-  </cover-view>
-</cover-view>
-
+<view class="tab-bar" id="tabbar">
+    <view class="tab-bar-border"></view>
+    <view
+        wx:for="{{list}}"
+        wx:key="index"
+        class="tab-bar-item"
+        data-path="{{item.pagePath}}"
+        data-index="{{index}}"
+        bindtap="switchTab"
+     >
+        <!-- <image src="{{selected === index ? item.selectedIconPath : item.iconPath}}"></image> -->
+        <image src="{{item.selectedIconPath}}" hidden="{{selected !== index}}"></image>
+        <image src="{{item.iconPath}}" hidden="{{selected === index}}"></image>
+        <view style="color: {{selected === index ? selectedColor : color}}">{{item.text}}</view>
+    </view>
+</view>

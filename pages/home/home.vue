@@ -10,6 +10,7 @@
             :url="item.url"
         >
         </u-cell>
+        <a-privacy></a-privacy>
     </view>
 </template>
 
@@ -23,7 +24,8 @@ export default {
                 { title: '报表', url: '/packageA/pages/report/report' },
                 { title: '悬浮按钮', url: '/packageA/pages/fab/fab' },
                 { title: '查询页面', url: '/packageA/pages/query-page/query-page' },
-                { title: '查询页面fullpage', url: '/packageA/pages/query-fullpage/query-fullpage' }
+                { title: '查询页面fullpage', url: '/packageA/pages/query-fullpage/query-fullpage' },
+                { title: 'list', url: '/packageA/pages/list/list' }
             ]
         }
     },

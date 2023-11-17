@@ -26,12 +26,13 @@ export default {
         }
     },
     onShow () {
-        const page = this.$mp.page
-        if (typeof page.getTabBar === 'function' && page.getTabBar()) {
-          page.getTabBar().setData({
-            selected: 1
-          })
-        }
+        console.log(getApp().globalData.tabbarList)
+        // const page = this.$mp.page
+        // if (typeof page.getTabBar === 'function' && page.getTabBar()) {
+        //   page.getTabBar().setData({
+        //     selected: 1
+        //   })
+        // }
     },
     methods: {
         onSearch (value) {

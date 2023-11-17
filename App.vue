@@ -1,6 +1,13 @@
 <script>
 	export default {
+        globalData: {
+            tabbarList: []
+        },
 		onLaunch () {
+            const config = wx.getExtConfigSync()
+            console.log('config', Object.keys(config).length)
+            wx.login()
+                .then(res => console.log('res', res))
 			// console.log('App Launch')
 		},
 		onShow () {

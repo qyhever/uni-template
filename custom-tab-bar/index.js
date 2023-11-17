@@ -1,3 +1,5 @@
+let selected = 0
+
 Component({
   data: {
     selected: 0,
@@ -28,14 +30,19 @@ Component({
     }]
   },
   attached() {
+      // getApp().globalData.tabbarList = this.data.list
+      this.setData({
+        selected
+      })
   },
   methods: {
     switchTab(e) {
       const {index, path} = e.currentTarget.dataset
       wx.switchTab({url: path})
-      this.setData({
-        selected: index
-      })
+      // this.setData({
+      //   selected: index
+      // })
+      selected = index
     }
   }
 })

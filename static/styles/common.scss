@@ -26,3 +26,8 @@
     bottom: 0;
     overflow: hidden;
 }
+
+.tab-bar-placeholder {
+    height: 48px;
+    padding-bottom: env(safe-area-inset-bottom);
+}

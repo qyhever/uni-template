@@ -93,6 +93,13 @@
                             "custom-navbar": "/wxcomponents/custom-navbar/index"
                         }
                     }
+                },
+                {
+                    "path": "pages/list/list",
+                    "style": {
+                        "enablePullDownRefresh": true,
+                        "usingComponents": {}
+                    }
                 }
             ]
         }
